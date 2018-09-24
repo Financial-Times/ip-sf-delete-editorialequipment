@@ -1,0 +1,29 @@
+<!-- 
+//-----------------------------------------------------------------------------
+// This page is to view a Editorial Equipment.
+// 
+// Change Log 
+// Date        Author          Change Description
+// -----------------------------------------------------------------------------
+// 05/10/2012  Deepak Gupta    Initial version of the code 
+// 09/11/2012  Graeme Cameron   Update. Includes fix for making record available again after marked redundant
+//----------------------------------------------------------------------------->
+<apex:page standardController="Equipment__c"  extensions="ViewEquipmentController" id="thePage">
+<apex:pageMessages id="pmMsgs"/>
+<apex:form id="theForm">
+<br></br>
+<apex:outputPanel id="mainBlock" >
+    <!-- Conditionally show button depending upon status of the Equipment  --->
+    <apex:commandButton value="Permanent Loan" action="{!permanentLoan}" rendered="{!showPermLoan}" style="align=text-centre"/>&nbsp;&nbsp;
+    <apex:commandButton value="Check In" action="{!checkIn}" rendered="{!showCheckIn}" style="align=text-centre"/>&nbsp;&nbsp;&nbsp;&nbsp;
+    <apex:commandButton value="Check Out" action="{!checkOut}" rendered="{!showCheckOut}" style="align=text-centre"/>&nbsp;&nbsp;&nbsp;&nbsp;
+    <apex:commandButton value="Mark Faulty" action="{!markFaulty}" rendered="{!showMarkFaulty}" style="align=text-centre"/>&nbsp;&nbsp;&nbsp;&nbsp;
+    <apex:commandButton value="Mark Redundant" action="{!markRedundant}" rendered="{!showMarkRedundant}" style="align=text-centre"/>&nbsp;&nbsp;&nbsp;&nbsp;
+    <apex:commandButton value="Mark Available" action="{!markAvailable}" rendered="{!showMarkAvailable}"  style="align=text-centre"/>&nbsp;&nbsp;&nbsp;&nbsp;    
+    <apex:commandButton value="Edit" action="{!editRecord}"  />
+    <br></br>
+    <!-- Display equipment details  --->
+    <apex:detail relatedListHover="false" title="false" />
+</apex:outputPanel>
+</apex:form>
+</apex:page>

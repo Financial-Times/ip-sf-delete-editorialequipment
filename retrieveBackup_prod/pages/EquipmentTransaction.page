@@ -1,0 +1,38 @@
+<apex:page standardController="Equipment__c" extensions="EquipmentTransactionController">
+<apex:pageMessages id="pmMsgs"/>
+<apex:form >
+<apex:pageBlock id="pageBlock">
+    <apex:pageBlockButtons location="both" id="pageButtons">
+        <apex:commandButton value="OK" action="{!saveTransaction}" />
+        <apex:commandButton value="Cancel" action="{!cancel}" />        
+    </apex:pageBlockButtons>
+    
+    <!-- Display equipment details from the parent record  --->
+    <apex:pageBlockSection columns="2" title="Editorial Equipment Details">
+        <apex:outputField value="{!equipment.Make__c}" />
+        <apex:outputField value="{!equipment.Model__c}" />
+        <apex:outputField value="{!equipment.Serial__c}" />    
+    </apex:pageBlockSection>
+    
+    <!-- Display section corresponding to check out opeartion  --->
+    <apex:pageBlockSection columns="2" title="Loan Details" rendered="{!operation='loan' ||operation='permloan'}">       
+        <apex:inputField value="{!equipmentTransaction.Borrowers_Email__c}" />
+        <apex:inputField value="{!equipmentTransaction.DateOut__c}" />
+        <apex:inputField value="{!equipmentTransaction.DateDue__c}" rendered="{!operation='loan'}" />
+        <apex:inputField value="{!equipmentTransaction.Check_Out_Comments__c}" />
+    </apex:pageBlockSection>
+    
+    <!-- Display section corresponding to check in opeartion  --->
+    <apex:pageBlockSection columns="2" title="Check In  Details" rendered="{!operation='checkin' }">
+        <apex:inputField value="{!equipmentTransaction.DateIn__c}"   />
+        <apex:inputField value="{!equipmentTransaction.Check_In_Comments__c}" />
+    </apex:pageBlockSection>
+    
+    <!-- Display section corresponding to marking faulty/redundant opeartion  --->
+    <apex:pageBlockSection columns="2" title="Mark equipment as {!operation}" rendered="{!operation='faulty' ||operation='redundant'}">
+        <apex:inputField label="{!IF(operation='faulty','Faulty Comments','Redundant Comments')}" value="{!equipment.Faulty_Redundant_Comments__c}"   />
+    </apex:pageBlockSection>
+    
+</apex:pageBlock>
+</apex:form>
+</apex:page>

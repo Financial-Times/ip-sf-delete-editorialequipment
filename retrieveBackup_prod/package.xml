@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>EquipmentTransactionController</members>
+        <members>TestEquipmentTransaction</members>
+        <members>TestViewEquipmentController</members>
+        <members>ViewEquipmentController</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>EquipmentTransaction</members>
+        <members>ViewEquipment</members>
+        <name>ApexPage</name>
+    </types>
+    <version>43.0</version>
+</Package>
